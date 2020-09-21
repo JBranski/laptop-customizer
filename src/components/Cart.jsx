@@ -1,5 +1,6 @@
 import React from 'react';
 import USCurrencyFormat from '../utils/USCurrencyFormat';
+import CartTotal from './CartTotal';
 
 export default function Cart (props) {
 	const summary = Object.keys(props.selected).map((feature, idx) => {
@@ -16,11 +17,6 @@ export default function Cart (props) {
 		  </div>
 		);
 	  });
-  
-	  const total = Object.keys(props.selected).reduce(
-		(acc, curr) => acc + props.selected[curr].cost,
-		0
-	  );
 
 	return (
 		<section className="main__summary">
@@ -28,9 +24,7 @@ export default function Cart (props) {
 			{summary}
 			<div className="summary__total">
 				<div className="summary__total__label">Total</div>
-				<div className="summary__total__value">
-					{USCurrencyFormat.format(total)}
-				</div>
+				<CartTotal selected={props.selected} />
 			</div>
 		</section>
 	)

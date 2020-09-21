@@ -1,7 +1,6 @@
 import React from 'react';
 import PartSelection from './PartSelection';
 import slugify from 'slugify';
-import USCurrencyFormat from '../utils/USCurrencyFormat';
 
 export default function PartsList(props){
 	const features = Object.keys(props.features).map((feature, idx) => {
@@ -9,10 +8,9 @@ export default function PartsList(props){
 		const options = props.features[feature].map(item => {
 		  const itemHash = slugify(JSON.stringify(item));
 		  return (
-			<PartSelection itemHash={itemHash} feature={feature} item={item} selected={props.selected} updateFeature = {props.updateFeature}/>
+			<PartSelection key={itemHash} feature={feature} item={item} selected={props.selected} updateFeature = {props.updateFeature}/>
 		  );
 		});
-  
 		return (
 		  <fieldset className="feature" key={featureHash}>
 			<legend className="feature__name">
@@ -27,9 +25,6 @@ export default function PartsList(props){
 		<form className="main__form">
 			<h2>Customize your laptop</h2>
 			{features}
-			{/* <PartSelection>
-
-			</PartSelection> */}
 		</form>
 )
 }
