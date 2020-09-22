@@ -8,7 +8,7 @@ export default function PartsList(props){
 		const options = props.features[feature].map(item => {
 		  const itemHash = slugify(JSON.stringify(item));
 		  return (
-			<PartSelection key={itemHash} feature={feature} item={item} selected={props.selected} updateFeature = {props.updateFeature}/>
+			<PartSelection key={itemHash} itemHash = { itemHash } feature={feature} item={item} selected={props.selected} updateFeature = {props.updateFeature}/>
 		  );
 		});
 		return (
